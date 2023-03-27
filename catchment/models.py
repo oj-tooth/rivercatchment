@@ -13,7 +13,7 @@ import pandas as pd
 def read_variable_from_csv(filename):
     """
     Reads a named variable from a CSV file, and returns a
-    pandas dataframe containing that variable. 
+    pandas dataframe containing that variable.
 
     The CSV file must contain a column of dates, a column of site
     ID's, and (one or more) columns of data - only one of which
