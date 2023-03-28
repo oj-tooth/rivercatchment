@@ -206,6 +206,6 @@ def test_daily_max(test_data, test_index, test_columns, expected_data, expected_
     ])
 def test_daily_min(test_data, test_index, test_columns, expected_data, expected_index, expected_columns):
     """Test min function works for array of zeroes and positive integers."""
-    from catchment.models import daily_max
-    pdt.assert_frame_equal(daily_max(pd.DataFrame(data=test_data, index=test_index, columns=test_columns)),
+    from catchment.models import daily_min
+    pdt.assert_frame_equal(daily_min(pd.DataFrame(data=test_data, index=test_index, columns=test_columns)),
                            pd.DataFrame(data=expected_data, index=expected_index, columns=expected_columns))
