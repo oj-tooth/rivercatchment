@@ -56,3 +56,14 @@ def daily_min(data):
     Index must be np.datetime64 compatible format."""
     return data.groupby(data.index.date).min()
 
+
+def data_above_threshold(site_id, data, threshold):
+    """ Determine if data measurement values for a
+    given site exceed a given threshold.
+
+    :param site_id: string indicating chosen Site ID
+    :param data: pandas DataFrame containing measurements
+    :param threshold: measurement threshold
+    :return: list of booleans
+    """
+    return list(map(lambda x: x > threshold, data[site_id]))
