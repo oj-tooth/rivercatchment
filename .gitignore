@@ -11,6 +11,9 @@ venv/
 # Output files
 *.png
 
+# iPython Notebooks
+*.ipynb
+
 # Python runtime
 *.pyc
 *.egg-info
