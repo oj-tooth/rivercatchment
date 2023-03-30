@@ -8,6 +8,7 @@ time across all sites.
 """
 
 import pandas as pd
+import numpy as np
 
 def read_variable_from_csv(filename):
     """Reads a named variable from a CSV file, and returns a
@@ -33,6 +34,11 @@ def read_variable_from_csv(filename):
     newdataset = newdataset.sort_index()
 
     return newdataset
+
+def daily_std(data):
+    """Calculate standard deviation from daily mean"""
+    return data.groupby(data.index.date).std()
+
 
 def daily_total(data):
     """Calculate the daily total of a 2D data array.
