@@ -10,8 +10,8 @@ def main(args):
     """The MVC Controller of the environmental data system.
 
     The Controller is responsible for:
-    - selecting the necessary models and views for the current task
-    - passing data between models and views
+    -- selecting the necessary models and views for the current task
+    -- passing data between models and views
     """
     InFiles = args.infiles
     if not isinstance(InFiles, list):
