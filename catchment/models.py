@@ -57,6 +57,11 @@ def daily_min(data):
     return data.groupby(data.index.date).min()
 
 
+def daily_range(data):
+  """Calculate the daily mean of a 2d data array.
+  Index must be np.datetime64 compatible format."""
+  return data.groupby(data.index.date).max() - data.groupby(data.index.date).min()
+
 def data_above_threshold(site_id, data, threshold):
     """ Determine if data measurement values for a
     given site exceed a given threshold.
@@ -134,13 +139,13 @@ class Catchment(Location):
 
 
     def add_site(self, new_site):
-        # Check to ensure site is within catchment, if both the catchment area 
-        # and the location have been defined 
+        # Check to ensure site is within catchment, if both the catchment area
+        # and the location have been defined
         if self.area.size and new_site.location.size and not sjoin(new_site.location,self.area).size:
             print(f'{new_site.name} not within {self.name} catchment')
             return
 
-        # Basic check to see if the site has already been added to the catchment area 
+        # Basic check to see if the site has already been added to the catchment area
         for site in self.sites:
             if site == new_site.name:
                 print(f'{new_site.name} has already been added to site list')
