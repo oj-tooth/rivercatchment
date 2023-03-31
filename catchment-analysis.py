@@ -5,6 +5,7 @@ our field project.
 """
 
 import argparse
+import logging
 
 from catchment import models, views
 
@@ -42,5 +43,14 @@ if __name__ == "__main__":
         help='Input CSV(s) containing measurement data')
 
     argumtents = parser.parse_args()
+
+    logging.basicConfig(filename="std.log",
+                        filemode="w",
+                        format='%(asctime)s - %(message)s',
+                        datefmt='%m/%d/%Y %I:%M:%S %p',
+                        level=logging.INFO)
+
+    for arg, value in sorted(vars(argumtents).items()):
+        logging.info("Argument %s: %r", arg, value)
 
     main(argumtents)
