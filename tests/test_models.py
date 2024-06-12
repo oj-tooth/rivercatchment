@@ -98,6 +98,29 @@ def test_daily_min_integers():
     pdt.assert_frame_equal(daily_min(test_input), test_result)
 
 
+def test_daily_range():
+  """Test that min function works for an array of positive integers."""
+  from catchment.models import daily_range
+
+  test_input = pd.DataFrame(
+    data=[[1],
+          [3],
+          [5]],
+    index=[pd.to_datetime('2000-01-01 01:00'),
+           pd.to_datetime('2000-01-01 02:00'),
+           pd.to_datetime('2000-01-01 03:00')],
+    columns=['A']
+  )
+  test_result = pd.DataFrame(
+    data=[[4]],
+    index=[datetime.date(2000, 1, 1)],
+    columns=['A']
+  )
+
+  # Need to use Pandas testing functions to compare arrays
+  pdt.assert_frame_equal(daily_range(test_input), test_result)
+
+
 @pytest.mark.parametrize(
     "test_data, test_index, test_columns, expected_data, expected_index, expected_columns",
     [
