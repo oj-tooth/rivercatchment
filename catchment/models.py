@@ -57,6 +57,12 @@ def daily_min(data):
     return data.groupby(data.index.date).min()
 
 
+def daily_count(data):
+    """Calculate the daily count of a 2D data array.
+    Index must be np.datetime64 compatible format."""
+    return data.groupby(data.index.date).count()
+
+
 def data_above_threshold(site_id, data, threshold):
     """ Determine if data measurement values for a
     given site exceed a given threshold.
